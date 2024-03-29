@@ -1,1 +1,1 @@
-# sintia javascript agent
+# sintia handler agent js
