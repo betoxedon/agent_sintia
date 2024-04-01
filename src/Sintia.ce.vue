@@ -93,10 +93,12 @@
 </script>
 
 <template>
-   <div class="agent-default min-h-[66px]" :style="screenSideStyle">
+   <div
+      class="agent-default min-h-[66px] text-onsurface-30"
+      :style="screenSideStyle">
       <div v-if="showChatDialog" class="chat-main show-in grid content-end">
          <div
-            class="grid w-full grid-rows-[min-content_minmax(0px,_480px)] overflow-hidden rounded-xl border border-slate-200 shadow-lg"
+            class="grid w-full grid-rows-[min-content_minmax(0px,_480px)] overflow-hidden rounded-xl"
             :style="agentActive.fontFamilyStyle">
             <div
                class="flex min-h-[74px] flex-col py-4 pl-5 pr-3"
@@ -137,8 +139,8 @@
                         <img
                            v-if="agentActive.imageUrl"
                            :src="agentActive.imageUrl"
-                           class="h-6 w-6" />
-                        <MonoLogo v-else class="h-6 w-6 text-slate-400" />
+                           class="h-full w-full" />
+                        <MonoLogo v-else class="h-6 w-6 text-slate-600" />
                      </div>
 
                      <span
@@ -167,7 +169,7 @@
 
       <div
          v-if="showChatStart"
-         class="chat-balloon flex h-[74px] flex-nowrap items-start gap-x-3 overflow-hidden p-[3px]"
+         class="flex h-[74px] flex-nowrap items-start gap-x-3 overflow-hidden p-[3px]"
          :class="{ 'justify-end': agentActive.screenSideId === 'id01' }">
          <div
             v-if="showChatBalloon"
@@ -183,7 +185,7 @@
             </div>
 
             <div
-               class="absolute top-[0.5px] cursor-pointer rounded-full bg-slate-400 p-0.5"
+               class="absolute top-[0.5px] cursor-pointer rounded-full border border-white bg-slate-500 p-0.5"
                :style="closeChatBalloonStyle"
                @click="showChatBalloon = false">
                <MonoClose class="h-4 w-4 text-white" />
@@ -191,13 +193,13 @@
          </div>
 
          <div
-            class="show-in relative flex h-[66px] w-[66px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border bg-white shadow-md hover:bg-slate-50"
+            class="show-in relative flex h-[66px] w-[66px] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border bg-white opacity-0 shadow-md hover:bg-slate-50"
             @click="onChatAvatar()">
             <img
                v-if="agentActive.imageUrl"
                :src="agentActive.imageUrl"
-               class="h-10 w-10" />
-            <MonoLogo v-else class="h-10 w-10 text-slate-400" />
+               class="h-full w-full" />
+            <MonoLogo v-else class="h-11 w-11 text-slate-600" />
          </div>
       </div>
    </div>
@@ -437,11 +439,6 @@
       width: 1.5rem;
       flex-shrink: 0;
    }
-   img {
-      height: auto;
-      width: 100%;
-      background-size: cover;
-   }
    input {
       font-size: 17px;
       line-height: 22px;
@@ -656,6 +653,9 @@
    .h-10 {
       height: 2.5rem;
    }
+   .h-11 {
+      height: 2.75rem;
+   }
    .h-4 {
       height: 1rem;
    }
@@ -680,6 +680,9 @@
    .h-\[9px\] {
       height: 9px;
    }
+   .h-full {
+      height: 100%;
+   }
    .min-h-\[48px\] {
       min-height: 48px;
    }
@@ -691,6 +694,9 @@
    }
    .w-10 {
       width: 2.5rem;
+   }
+   .w-11 {
+      width: 2.75rem;
    }
    .w-4 {
       width: 1rem;
@@ -818,17 +824,21 @@
    .border {
       border-width: 1px;
    }
-   .border-slate-200 {
+   .border-white {
       --tw-border-opacity: 1;
-      border-color: rgb(226 232 240 / var(--tw-border-opacity));
+      border-color: rgb(255 255 255 / var(--tw-border-opacity));
    }
    .bg-\[\#02fe04\] {
       --tw-bg-opacity: 1;
       background-color: rgb(2 254 4 / var(--tw-bg-opacity));
    }
-   .bg-slate-400 {
+   .bg-slate-500 {
       --tw-bg-opacity: 1;
-      background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+      background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+   }
+   .bg-slate-900 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(15 23 42 / var(--tw-bg-opacity));
    }
    .bg-surface-10 {
       --tw-bg-opacity: 1;
@@ -927,9 +937,13 @@
       --tw-text-opacity: 1;
       color: rgb(100 116 139 / var(--tw-text-opacity));
    }
-   .text-slate-400 {
+   .text-onsurface-30 {
       --tw-text-opacity: 1;
-      color: rgb(148 163 184 / var(--tw-text-opacity));
+      color: rgb(15 23 42 / var(--tw-text-opacity));
+   }
+   .text-slate-600 {
+      --tw-text-opacity: 1;
+      color: rgb(71 85 105 / var(--tw-text-opacity));
    }
    .text-white {
       --tw-text-opacity: 1;
@@ -937,13 +951,6 @@
    }
    .opacity-0 {
       opacity: 0;
-   }
-   .shadow-lg {
-      --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-      --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-         0 4px 6px -4px var(--tw-shadow-color);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
    }
    .shadow-md {
       --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -976,6 +983,7 @@
       animation-name: showShowIn;
       animation-duration: 2s;
       animation-fill-mode: forwards;
+      animation-delay: 0.5s;
    }
    .chat-balloon.show-in {
       animation-delay: 2s;
