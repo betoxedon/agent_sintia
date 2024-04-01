@@ -1,0 +1,43 @@
+{
+   "name": "sintia-handler-agent-js",
+   "private": true,
+   "version": "1.0.0",
+   "type": "module",
+   "scripts": {
+      "preview": "vite preview",
+      "build": "vue-tsc && vite build",
+      "format": "prettier --write .",
+      "dev": "vite --open"
+   },
+   "prettier": {
+      "arrowParens": "always",
+      "semi": false,
+      "singleQuote": true,
+      "tabWidth": 3,
+      "bracketSameLine": true,
+      "bracketSpacing": true,
+      "htmlWhitespaceSensitivity": "ignore",
+      "trailingComma": "all",
+      "printWidth": 85,
+      "endOfLine": "lf",
+      "singleAttributePerLine": false,
+      "vueIndentScriptAndStyle": true
+   },
+   "dependencies": {
+      "axios": "^1.6.7",
+      "firebase": "^10.7.2",
+      "vue": "^3.3.11"
+   },
+   "devDependencies": {
+      "@vitejs/plugin-vue": "^4.5.2",
+      "@vue/tsconfig": "^0.5.1",
+      "prettier": "^3.2.4",
+      "ts-node": "^10.9.2",
+      "typescript": "^5.2.2",
+      "vite": "^5.0.8",
+      "vue-tsc": "^1.8.25"
+   },
+   "engines": {
+      "node": "20.11.1"
+   }
+}
